@@ -1,5 +1,5 @@
 <template>
-  <h3>Abdout production</h3>
+  <h3>Abdout productions</h3>
 </template>
 
 <script>
