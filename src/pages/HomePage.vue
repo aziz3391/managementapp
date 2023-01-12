@@ -13,16 +13,22 @@
       <thead v-if="departs.length > 0">
         <tr>
           <td>№</td>
-          <td>Name</td>
+          <td>Name of department</td>
           <td>Edition</td>
         </tr>
       </thead>
       <tbody v-if="departs.length > 0">
         <tr v-for="(item, index) in departs" :key="index">
-          <td>{{ item.id }}</td>
+          <td>{{ index + 1 }}</td>
           <td>{{ item.title }}</td>
           <td>
-            <button @click="remove(item.id)" class="btn btn-danger">X</button>
+            <button @click="remove(item.id)" class="btn btn-danger">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <button @click="change()" class="btn btn-warning">
+              <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <div v-if="state">this is a hint</div>
           </td>
         </tr>
       </tbody>
@@ -43,12 +49,24 @@ export default {
   data() {
     return {
       url: "http://localhost:3000",
-      departs: [{}],
+      departs: [],
       depart: "",
+      state: false,
     };
   },
   components: {},
   methods: {
+    change() {
+      if (confirm("you wanna change")) {
+        this.state = !this.state;
+      }
+    },
+    // update(id)
+    // {let index = this.departs.findIndex(element=> element.id==id)
+    // let updating = this.departs[index]
+
+    //   axios.put()
+    // },
     remove(id) {
       if (confirm("Confirm your action"))
         axios.delete(`${this.url}/departs/${id}`).then((res) => {

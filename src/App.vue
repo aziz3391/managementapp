@@ -27,8 +27,8 @@ export default {
           link: "home",
         },
         {
-          title: "Production",
-          link: "production",
+          title: "Staff",
+          link: "staff",
         },
         {
           title: "Help",

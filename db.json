@@ -1,9 +1,20 @@
 {
-  "staff": [],
+  "staff": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ],
   "departs": [
     {
-      "title": "new item",
-      "id": 1
+      "title": "safjs",
+      "id": 3
+    },
+    {
+      "title": "sfs",
+      "id": 4
     }
   ],
   "todo": []

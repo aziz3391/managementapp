@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import HomePage from '@/pages/HomePage'
 import AboutPage from '@/pages/AboutPage'
-import ProductionVue from '@/components/ProductionVue'
+import StaffInfo from '@/components/StaffInfo'
 import MapsVue from '@/components/MapsVue'
 import LogOut from '@/components/LogOut'
 import HelpVue from '@/components/HelpVue'
@@ -17,8 +17,8 @@ const routes = [{
     component: AboutPage
 },
 {
-    path: '/production',
-    component: ProductionVue
+    path: '/staff',
+    component: StaffInfo
 }, {
     path: '/maps',
     component: MapsVue
