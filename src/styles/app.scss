@@ -13,8 +13,10 @@
         color: black;
         font-weight: 600;
         font-size: 20px;
+        transition-duration: 300ms;
     }
 
+    height: 80px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -22,8 +24,12 @@
     margin-bottom: 20px;
 }
 
+
 a.router-link-active.router-link-exact-active.box_linking {
     text-decoration: underline;
+    font-size: 30px;
+    transition-duration: 500ms;
+    transform: translateY(10px);
 }
 
 .margincentered {

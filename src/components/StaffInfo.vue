@@ -1,34 +1,11 @@
 <template>
   <div class="container">
     <div class="d-flex">
-      <h2>Staff</h2>
-
-      <div class="d-flex">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Name"
-          v-model="staff.name"
-        />
-        <select class="form-select" v-model="staff.department">
-          <option value="0" disabled>Department</option>
-          <option value="finance">finance</option>
-          <option value="management">management</option>
-          <option value="IT department">IT department</option>
-          <option value="security">security</option>
-        </select>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Salary"
-          v-model="staff.salary"
-        />
-        <button @click="add()" id="btn" class="btn btn-success">
-          Add staff
-        </button>
-      </div>
+      <h2>List of Staff</h2>
+      <button class="btn btn-success" @click="toggle()">Add new staff</button>
     </div>
-    <button v-if="stateundo" @click="undo1()" class="undo2">Undo</button>
+    <AddStaff v-if="toggle" />
+    <button v-if="false" @click="undo1()" class="undo2">Undo</button>
     <table class="table">
       <thead v-if="staff.length > 0">
         <tr>
@@ -63,9 +40,14 @@
 
 <script>
 import axios from "axios";
+import AddStaff from "@/components/AddStaff";
 export default {
+  component: {
+    AddStaff,
+  },
   data() {
     return {
+      toggl: false,
       undo: {},
       staffs: [],
       staff: {
@@ -76,6 +58,10 @@ export default {
     };
   },
   methods: {
+    toggle() {
+      this.toggl = !this.toggl;
+      console.log(this.toggl);
+    },
     add() {
       axios.post(`${this.url}/staff`, this.staff).then((res) => {
         if (res.status == 201) {
