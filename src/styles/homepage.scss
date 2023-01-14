@@ -2,11 +2,15 @@
     margin: 0;
     padding: 0;
     background-color: rgb(255, 255, 255);
+    // width: 100vw;
+    // border: 2px soldi yellow;
 }
 
 .d-flex {
+    margin: auto;
     justify-content: space-between;
     padding: 10px;
+    width: 95%;
     // border: 1px solid black;
 
 

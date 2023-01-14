@@ -3,7 +3,7 @@
     <div class="d-flex">
       <h2>Main</h2>
 
-      <div class="d-flex">
+      <div class="d-flex" style="justify-content: end">
         <input type="text" class="form-control" v-model="depart" />
         <button @click="add()" class="btn btn-success">Add</button>
       </div>
@@ -85,9 +85,10 @@ export default {
       axios.post(`${this.url}/departs`, { title: this.depart }).then((res) => {
         if (res.status == 201) {
           this.departs.push(res.data);
-          console.log(this.departs);
         }
         this.depart = "";
+        this.$emit("forapp", this.departs);
+        console.log(this.departs);
       });
       // .finally(() => {
       //   this.depart = {};

@@ -1,18 +1,110 @@
 {
   "staff": [
     {
+      "department": "management",
+      "name": "saf",
+      "salary": 224,
+      "date": "0021-12-01",
+      "id": 13
+    },
+    {
+      "department": "management",
+      "name": "saf",
+      "salary": 224,
+      "date": "0021-12-01",
+      "id": 14
+    },
+    {
+      "department": "finance",
+      "name": "23",
+      "date": "0012-12-12",
+      "salary": 12,
+      "id": 16
+    },
+    {
+      "department": "finance",
+      "name": "324",
+      "date": "0012-12-12",
+      "salary": 51451651,
+      "id": 17
+    },
+    {
       "department": "IT department",
-      "id": 5
+      "name": "Azizbek",
+      "date": "1232-12-12",
+      "salary": 32,
+      "id": 18
+    },
+    {
+      "department": "IT department",
+      "name": "Azizbek",
+      "date": "1232-12-12",
+      "salary": 32,
+      "id": 19
+    },
+    {
+      "department": "IT department",
+      "name": "Azizbek",
+      "date": "2003-03-10",
+      "salary": 3.2,
+      "id": 20
+    },
+    {
+      "department": "IT department",
+      "name": "Azizbek",
+      "date": "82003-03-10",
+      "salary": 320000,
+      "id": 21
+    },
+    {
+      "department": "0",
+      "name": "asfs",
+      "id": 22
+    },
+    {
+      "department": "management",
+      "salary": 32,
+      "date": "2003-08-01",
+      "name": "Azizbek",
+      "id": 23
+    },
+    {
+      "department": "0",
+      "id": 24
+    },
+    {
+      "department": "0",
+      "id": 25
+    },
+    {
+      "department": "0",
+      "id": 26
+    },
+    {
+      "department": "0",
+      "id": 27
+    },
+    {
+      "department": "0",
+      "id": 28
+    },
+    {
+      "department": "0",
+      "id": 29
+    },
+    {
+      "department": "0",
+      "id": 30
     }
   ],
   "departs": [
     {
-      "title": "safjs",
-      "id": 3
+      "title": "afsewwfwf",
+      "id": 12
     },
     {
-      "title": "sfs",
-      "id": 4
+      "title": "sf",
+      "id": 13
     }
   ],
   "todo": []

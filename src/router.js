@@ -7,6 +7,7 @@ import MapsVue from '@/components/MapsVue'
 import LogOut from '@/components/LogOut'
 import HelpVue from '@/components/HelpVue'
 
+
 const routes = [{
     path: '/home',
     component: HomePage,
@@ -30,7 +31,8 @@ const routes = [{
 {
     path: '/help',
     component: HelpVue
-}
+},
+
 
 
 ]

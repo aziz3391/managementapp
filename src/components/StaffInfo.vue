@@ -2,16 +2,19 @@
   <div class="container">
     <div class="d-flex">
       <h2>List of Staff</h2>
-      <button class="btn btn-success" @click="toggle()">Add new staff</button>
+      <button id="btnadd" class="btn btn-success" @click="toggle()">
+        Add new staff
+      </button>
     </div>
-    <AddStaff v-if="toggle" />
+
     <button v-if="false" @click="undo1()" class="undo2">Undo</button>
     <table class="table">
-      <thead v-if="staff.length > 0">
+      <thead v-if="staffs.length > 0">
         <tr>
           <td>№</td>
           <td>Name</td>
           <td>Department</td>
+          <td>Birthday</td>
           <td>Salary</td>
           <td></td>
         </tr>
@@ -21,6 +24,7 @@
           <td>{{ index + 1 }}</td>
           <td>{{ vstaff.name }}</td>
           <td>{{ vstaff.department }}</td>
+          <td>{{ vstaff.date }}</td>
           <td>{{ vstaff.salary }}</td>
           <td>
             <button @click="remove(vstaff.id)" class="btn btn-danger">X</button>
@@ -35,6 +39,12 @@
         </tr>
       </tbody>
     </table>
+    <AddStaff
+      v-if="toggl"
+      @adding="(staffobj) => add(staffobj)"
+      @toggling="(child) => togglevalue(child)"
+      :forstaff="forstaff"
+    />
   </div>
 </template>
 
@@ -42,9 +52,10 @@
 import axios from "axios";
 import AddStaff from "@/components/AddStaff";
 export default {
-  component: {
+  components: {
     AddStaff,
   },
+  props: ["forstaff"],
   data() {
     return {
       toggl: false,
@@ -60,14 +71,18 @@ export default {
   methods: {
     toggle() {
       this.toggl = !this.toggl;
+      console.log(this.forstaff);
+    },
+    togglevalue(child) {
+      this.toggl = child;
       console.log(this.toggl);
     },
-    add() {
-      axios.post(`${this.url}/staff`, this.staff).then((res) => {
+    add(staffobj) {
+      axios.post(`${this.url}/staff`, staffobj).then((res) => {
         if (res.status == 201) {
           this.staffs.push(res.data);
         }
-        this.staff = {};
+        this.staffobj = {};
       });
     },
     remove(id) {
