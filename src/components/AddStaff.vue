@@ -23,12 +23,13 @@
             v-model="staff.department"
           >
             <option value="0" disabled>Department</option>
-            <option v-for="(item, index) in forstaff" :key="index" value="item">
-              {{ item }}
+            <option
+              v-for="(item, index) in dep"
+              :key="index"
+              value="{{item.title}}"
+            >
+              {{ item.title }}
             </option>
-            <option value="management">management</option>
-            <option value="IT department">IT department</option>
-            <option value="security">security</option>
           </select>
         </div>
         <div class="datebox">
@@ -67,14 +68,15 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      //   staffs: [],
+      dep: [],
       staff: {
         department: "0",
       },
-
+      url: "http://localhost:3000",
       toggle1: false,
     };
   },
@@ -91,7 +93,13 @@ export default {
       this.$emit("toggling", this.toggle1);
     },
   },
-  props: ["forstaff"],
+  mounted() {
+    axios.get(`${this.url}/departs`).then((res) => {
+      if (res.status == 200) {
+        this.dep = res.data;
+      }
+    });
+  },
 };
 </script>
 

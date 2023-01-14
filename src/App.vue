@@ -13,29 +13,16 @@
     <div class="margincentered">
       <router-view class="output"></router-view>
     </div>
-    <button @click="give1()">work</button>
   </div>
-  <HomePage v-if="false" @forapp="(object) => give(object)" />
-  <StaffInfo v-if="false" :forstaff="forstaff" />
 </template>
 
 <script>
-import StaffInfo from "@/components/StaffInfo.vue";
-import HomePage from "@/pages/HomePage.vue";
 export default {
   name: "App",
-  methods: {
-    give(object) {
-      object = this.forstaff;
-      console.log(object, "hello");
-    },
-    give1() {
-      console.log(this.forstaff, "hi");
-    },
-  },
+  methods: {},
   data() {
     return {
-      forstaff: "",
+      forstaff: [],
       address: [
         {
           title: "Main",
@@ -60,7 +47,7 @@ export default {
       ],
     };
   },
-  components: { StaffInfo, HomePage },
+  components: {},
 };
 </script>
 

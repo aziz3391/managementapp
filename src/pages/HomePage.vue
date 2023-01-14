@@ -61,12 +61,7 @@ export default {
         this.state = !this.state;
       }
     },
-    // update(id)
-    // {let index = this.departs.findIndex(element=> element.id==id)
-    // let updating = this.departs[index]
 
-    //   axios.put()
-    // },
     remove(id) {
       if (confirm("Confirm your action"))
         axios.delete(`${this.url}/departs/${id}`).then((res) => {
@@ -77,24 +72,14 @@ export default {
             }
           }
         });
-      // .catch((error) => {
-      //   console.warn("Oops server not found");
-      // });
     },
     add() {
       axios.post(`${this.url}/departs`, { title: this.depart }).then((res) => {
         if (res.status == 201) {
           this.departs.push(res.data);
+          this.depart = "";
         }
-        this.depart = "";
-        this.$emit("forapp", this.departs);
-        console.log(this.departs);
       });
-      // .finally(() => {
-      //   this.depart = {};
-      //   console.log(this.depart, "ANSWER");
-      //   console.log("successfully finished !");
-      // });
     },
   },
   mounted() {

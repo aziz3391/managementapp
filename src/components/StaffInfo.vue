@@ -43,7 +43,6 @@
       v-if="toggl"
       @adding="(staffobj) => add(staffobj)"
       @toggling="(child) => togglevalue(child)"
-      :forstaff="forstaff"
     />
   </div>
 </template>
@@ -55,7 +54,7 @@ export default {
   components: {
     AddStaff,
   },
-  props: ["forstaff"],
+
   data() {
     return {
       toggl: false,
