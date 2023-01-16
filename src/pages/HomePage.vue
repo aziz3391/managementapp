@@ -14,6 +14,7 @@
         <tr>
           <td>№</td>
           <td>Name of department</td>
+          <td>Number of staff</td>
           <td>Edition</td>
         </tr>
       </thead>
@@ -21,6 +22,7 @@
         <tr v-for="(item, index) in departs" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ item.title }}</td>
+          <td>{{ GetCount(item.title) }}</td>
           <td>
             <button @click="remove(item.id)" class="btn btn-danger">
               <ion-icon name="close-outline"></ion-icon>
@@ -52,10 +54,16 @@ export default {
       departs: [],
       depart: "",
       state: false,
+      workers: [],
+      num: [],
     };
   },
   components: {},
   methods: {
+    GetCount(title) {
+      let number = this.workers.filter((worker) => worker.department == title);
+      return number.length;
+    },
     change() {
       if (confirm("you wanna change")) {
         this.state = !this.state;
@@ -86,6 +94,13 @@ export default {
     axios.get(`${this.url}/departs`).then((Departments) => {
       if (Departments.status == 200) {
         this.departs = Departments.data;
+        console.log(this.departs);
+      }
+    });
+    axios.get(`${this.url}/staff`).then((info) => {
+      if (info.status == 200) {
+        this.workers = info.data;
+        // console.log(this.workers);
       }
     });
   },

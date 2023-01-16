@@ -24,7 +24,7 @@
           <td>{{ index + 1 }}</td>
           <td>{{ vstaff.name }}</td>
           <td>{{ vstaff.department }}</td>
-          <td>{{ vstaff.date }}</td>
+          <td>{{ getage(vstaff.date) }}</td>
           <td>{{ vstaff.salary }}</td>
           <td>
             <button @click="remove(vstaff.id)" class="btn btn-danger">X</button>
@@ -59,6 +59,7 @@ export default {
     return {
       toggl: false,
       undo: {},
+      depart: [],
       staffs: [],
       staff: {
         department: "0",
@@ -68,6 +69,13 @@ export default {
     };
   },
   methods: {
+    getage(day) {
+      let date = new Date(day);
+      console.log(date.getFullYear());
+      let tday = new Date();
+      console.log(tday.getFullYear());
+      return tday.getFullYear() - date.getFullYear();
+    },
     toggle() {
       this.toggl = !this.toggl;
       console.log(this.forstaff);
@@ -98,15 +106,6 @@ export default {
           }
         });
       }
-    },
-    undo1() {
-      console.log(this.undo);
-      axios.post(`${this.url}/staff`, this.undo).then((res) => {
-        if (res.status == 201) {
-          this.staffs.push(res.data);
-        }
-        this.undo = {};
-      });
     },
   },
   mounted() {

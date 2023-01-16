@@ -26,7 +26,7 @@
             <option
               v-for="(item, index) in dep"
               :key="index"
-              value="{{item.title}}"
+              :value="item.title"
             >
               {{ item.title }}
             </option>
