@@ -23,11 +23,7 @@
             v-model="staff.department"
           >
             <option value="0" disabled>Department</option>
-            <option
-              v-for="(item, index) in dep"
-              :key="index"
-              :value="item.title"
-            >
+            <option v-for="(item, index) in dep" :key="index" :value="item.id">
               {{ item.title }}
             </option>
           </select>

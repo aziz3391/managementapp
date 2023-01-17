@@ -6,7 +6,7 @@ import StaffInfo from '@/components/StaffInfo'
 import MapsVue from '@/components/MapsVue'
 import LogOut from '@/components/LogOut'
 import HelpVue from '@/components/HelpVue'
-
+import StaffDepartment from '@/components/inner/StaffDepartment'
 
 const routes = [{
     path: '/home',
@@ -32,6 +32,10 @@ const routes = [{
     path: '/help',
     component: HelpVue
 },
+{
+    path: '/home/:id',
+    component: StaffDepartment
+}
 
 
 

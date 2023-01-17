@@ -2,12 +2,9 @@
   <div class="container">
     <div class="d-flex">
       <h2>List of Staff</h2>
-      <button id="btnadd" class="btn btn-success" @click="toggle()">
-        Add new staff
-      </button>
+      <button class="btn btn-success" @click="toggle()">Add new staff</button>
     </div>
 
-    <button v-if="false" @click="undo1()" class="undo2">Undo</button>
     <table class="table">
       <thead v-if="staffs.length > 0">
         <tr>
@@ -23,7 +20,7 @@
         <tr v-for="(vstaff, index) in staffs" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ vstaff.name }}</td>
-          <td>{{ vstaff.department }}</td>
+          <td>{{ getdepart(vstaff.department) }}</td>
           <td>{{ getage(vstaff.date) }}</td>
           <td>{{ vstaff.salary }}</td>
           <td>
@@ -69,20 +66,25 @@ export default {
     };
   },
   methods: {
+    getdepart(id) {
+      let dep = this.depart.find((element) => element.id == id);
+      // console.log(dep.title);
+      return dep.title;
+    },
     getage(day) {
       let date = new Date(day);
-      console.log(date.getFullYear());
+      // console.log(date.getFullYear());
       let tday = new Date();
-      console.log(tday.getFullYear());
+      // console.log(tday.getFullYear());
       return tday.getFullYear() - date.getFullYear();
     },
     toggle() {
       this.toggl = !this.toggl;
-      console.log(this.forstaff);
+      // console.log(this.forstaff);
     },
     togglevalue(child) {
       this.toggl = child;
-      console.log(this.toggl);
+      // console.log(this.toggl);
     },
     add(staffobj) {
       axios.post(`${this.url}/staff`, staffobj).then((res) => {
@@ -112,6 +114,11 @@ export default {
     axios.get(`${this.url}/staff`).then((res) => {
       if (res.status == 200) {
         this.staffs = res.data;
+      }
+    });
+    axios.get(`${this.url}/departs`).then((res) => {
+      if (res.status == 200) {
+        this.depart = res.data;
       }
     });
   },

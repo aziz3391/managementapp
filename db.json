@@ -1,25 +1,39 @@
 {
   "staff": [
     {
-      "department": "IT department",
+      "department": 4,
       "name": "Azizbek",
-      "date": "2003-12-12",
-      "salary": 32,
-      "id": 19
+      "date": "2003-08-31",
+      "salary": 5000,
+      "id": 29
     },
     {
-      "department": "Student support",
-      "name": "Bobur Ochilov",
-      "date": "1980-12-31",
-      "salary": 10000000,
-      "id": 20
-    },
-    {
-      "department": "IT department",
-      "name": "Elshod Adamov",
-      "date": "1989-12-12",
+      "department": 4,
+      "name": "Ochilov Bobir",
+      "date": "1986-12-31",
       "salary": 10,
-      "id": 21
+      "id": 30
+    },
+    {
+      "department": 3,
+      "name": "Otkir aka",
+      "date": "1979-12-12",
+      "salary": 10,
+      "id": 31
+    },
+    {
+      "department": 1,
+      "name": "Elshod Adamov",
+      "date": "1990-03-11",
+      "salary": 10,
+      "id": 32
+    },
+    {
+      "department": 2,
+      "name": "Asadullahonova Dildora",
+      "date": "1980-12-12",
+      "salary": 10,
+      "id": 33
     }
   ],
   "departs": [

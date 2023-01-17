@@ -22,7 +22,11 @@
         <tr v-for="(item, index) in departs" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ item.title }}</td>
-          <td>{{ GetCount(item.title) }}</td>
+          <td>
+            <router-link :to="`/home/${item.id}`">
+              {{ GetCount(item.id) }}
+            </router-link>
+          </td>
           <td>
             <button @click="remove(item.id)" class="btn btn-danger">
               <ion-icon name="close-outline"></ion-icon>
@@ -60,8 +64,8 @@ export default {
   },
   components: {},
   methods: {
-    GetCount(title) {
-      let number = this.workers.filter((worker) => worker.department == title);
+    GetCount(id) {
+      let number = this.workers.filter((worker) => worker.department == id);
       return number.length;
     },
     change() {
