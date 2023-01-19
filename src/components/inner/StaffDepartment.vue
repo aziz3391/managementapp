@@ -1,7 +1,19 @@
 <template>
   <div class="header">
+    <button
+      class="btn btn-primary"
+      @click="
+        () => {
+          $router.push('/home');
+        }
+      "
+    >
+      &lt;
+      <i class="bi bi-arrow-bar-left"></i>
+    </button>
     <h1 class="text">{{ title }}</h1>
   </div>
+  <button class="btn btn-success" @click="toggle()">Add new staff</button>
   <table class="table">
     <thead v-if="somestaffs.length > 0">
       <tr>
@@ -34,12 +46,33 @@
       </tr>
     </tbody>
   </table>
+  <AddStaff
+    v-if="toggl"
+    @adding="(staffobj) => add(staffobj)"
+    @toggling="(child) => togglevalue(child)"
+  />
 </template>
 
 <script>
 import axios from "axios";
 export default {
   methods: {
+    toggle() {
+      this.toggl = true;
+      console.log(this.forstaff);
+    },
+    togglevalue(child) {
+      this.toggl = child;
+      // console.log(this.toggl);
+    },
+    add(staffobj) {
+      axios.post(`${this.url}`, staffobj).then((res) => {
+        if (res.status == 201) {
+          this.staffs.push(res.data);
+        }
+        this.staffobj = {};
+      });
+    },
     getage(day) {
       let date = new Date(day);
       console.log(date.getFullYear());
@@ -64,6 +97,7 @@ export default {
   },
   data() {
     return {
+      toggl: true,
       somestaffs: [],
       staffs: [],
       fordep: [],
@@ -87,6 +121,9 @@ export default {
       if (res.status == 200) {
         this.somestaffs = res.data;
         console.log(res.data);
+        if (this.somestaffs.length == 0) {
+          this.$router.push("/home");
+        }
       }
     });
   },

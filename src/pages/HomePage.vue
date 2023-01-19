@@ -15,7 +15,9 @@
           <td>№</td>
           <td>Name of department</td>
           <td>Number of staff</td>
-          <td>Edition</td>
+          <td>
+            <div class="d-flex justify-content-end">Edition</div>
+          </td>
         </tr>
       </thead>
       <tbody v-if="departs.length > 0">
@@ -23,18 +25,17 @@
           <td>{{ index + 1 }}</td>
           <td>{{ item.title }}</td>
           <td>
-            <router-link :to="`/home/${item.id}`">
-              {{ GetCount(item.id) }}
-            </router-link>
+            {{ GetCount(item.id) }}
           </td>
           <td>
-            <button @click="remove(item.id)" class="btn btn-danger">
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-            <button @click="change()" class="btn btn-warning">
-              <ion-icon name="create-outline"></ion-icon>
-            </button>
-            <div v-if="state">this is a hint</div>
+            <div class="d-flex justify-content-end">
+              <router-link class="btn btn-success me-2" :to="`/home/${item.id}`"
+                >Batafsil</router-link
+              >
+              <button @click="remove(item.id)" class="btn btn-danger">
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>
